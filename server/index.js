@@ -43,9 +43,9 @@ function validateBody(body) {
 
 }
 
-Mongoose.connect(uri, options, (err) => {
+//Mongoose.connect(uri, options, (err) => {
 
-	const models = Models();
+	//const models = Models();
 
 	// Start
 	const app = Express();
@@ -167,5 +167,5 @@ Mongoose.connect(uri, options, (err) => {
 	app.listen(APP_PORT, ()=> {
 		console.log(`App listening on port ${APP_PORT}`);
 	});
-});
+//});
 
