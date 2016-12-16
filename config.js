@@ -3,6 +3,6 @@ module.exports =  {
 		uri: 'mongodb://TechOTG:AJ_TECH_OTG@0.0.0.0:27017/TechOTG',
 		options: {}
 	},
-	APP_PORT: 3000,
+	APP_PORT: 5000,
 	MANDRILL_KEY: process.env.MANDRILL_KEY || 'MANDRILL_KEY'
 }
