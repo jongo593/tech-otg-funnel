@@ -1,16 +1,16 @@
-import Express from 'express';
-import cors from 'cors';
-import path from 'path';
-import config from '../config';
-import Mandrill from 'mandrill-api';
-import Mongoose from 'mongoose';
-import Models from '../models';
-import BodyParser from 'body-parser'
-import _ from 'lodash';
-import {DEVICES, ISSUES} from '../client/constants';
+const  Express = require('express');
+const cors = require('cors');
+const path = require('path');
+const config = require('../config');
+const Mandrill = require('mandrill-api');
+//const Mongoose = require('mongoose');
+//const Models = require('../models');
+const BodyParser = require('body-parser');
+const _ = require('lodash');
+const {DEVICES, ISSUES} = require('../client/constants');
 // Config
 const APP_PORT = config.APP_PORT;
-const { uri, options } = config.MONGO;
+//const { uri, options } = config.MONGO;
 
 //Mandrill
 const mandrill = new Mandrill.Mandrill(config.MANDRILL_KEY);

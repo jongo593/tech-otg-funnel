@@ -1,4 +1,4 @@
-export const DEVICES = {
+ const DEVICES = {
 	iPhone: {
 		image: '/images/iPhone.png',
 		width: 200,
@@ -272,10 +272,15 @@ export const DEVICES = {
 	}
 };
 
-export const ISSUES = [
+ const ISSUES = [
 	'Broken Screen',
 	'Battery',
 	'Water Damage',
 	'Won\'t Turn On',
 	'Other'
 ];
+
+module.exports = {
+	ISSUES: ISSUES,
+	DEVICES: DEVICES
+}

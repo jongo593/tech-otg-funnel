@@ -1,4 +1,4 @@
-export default {
+module.exports =  {
 	MONGO: {
 		uri: 'mongodb://TechOTG:AJ_TECH_OTG@0.0.0.0:27017/TechOTG',
 		options: {}
