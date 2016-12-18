@@ -61,7 +61,9 @@ const config = {
 		}),
 		new ExtractTextPlugin('app.css', {
 			allChunks: true
-		})
+		}),
+		new StringReplacePlugin()
+
 	]
 };
 
