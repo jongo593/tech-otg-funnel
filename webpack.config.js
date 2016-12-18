@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const StringReplacePlugin = require('string-replace-webpack-plugin');
 const config = {
 	context: __dirname + '/client',
 	entry: './src/index.js',
@@ -23,6 +23,22 @@ const config = {
 			{
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract('css')
+			},
+			{
+				exclude: /node_modules/,
+				test: /\.(js)$/,
+				loader: StringReplacePlugin.replace({
+					replacements: [
+						{
+							pattern: 'process.env.SERVER_BASE_URL',
+							replacement: function (match, p1, offset, string) {
+								if(process.env.PORT) {
+									return "'https://0.0.0.0:"+process.env.PORT+"'"
+								}
+								return "'http://0.0.0.0:3002'";
+							}
+						}
+					]})
 			}
 
 		]

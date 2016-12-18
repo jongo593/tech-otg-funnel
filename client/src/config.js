@@ -1,4 +1,4 @@
-export const SERVER_BASE_URL = 'https://0.0.0.0.:43861';
+export const SERVER_BASE_URL = process.env.SERVER_BASE_URL
 
 export default {
 	SERVER_BASE_URL
