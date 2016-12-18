@@ -33,7 +33,7 @@ const config = {
 							pattern: 'process.env.SERVER_BASE_URL',
 							replacement: function (match, p1, offset, string) {
 								if(process.env.PORT) {
-									return "'https://0.0.0.0:"+process.env.PORT+"'"
+									return "'https://tech-otg-funnel.herokuapp.com'"
 								}
 								return "'http://0.0.0.0:3002'";
 							}
