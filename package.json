@@ -11,7 +11,7 @@
     "start": "echo \"Starting App\" && npm run prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0",
-    "prod": "rm -rf ./dist/ && NODE_ENV=production node ./node_modules/webpack/bin/webpack.js -p && cp -rf ./client/images/ ./dist/images/ && cp ./client/index.html ./dist && NODE_ENV=production node ./server/index.js"
+    "prod": "rm -rf ./dist/ && NODE_ENV=production node ./node_modules/webpack/bin/webpack.js -p && cp -rf ./client/images/ ./dist/images/ && cp ./client/index.html ./dist && NODE_ENV=production && MANDRILL_KEY=q_AReSTEBKTLAcXMbzG8ew && node ./server/index.js"
   },
   "author": "",
   "license": "ISC",
