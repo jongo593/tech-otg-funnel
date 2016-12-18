@@ -8,7 +8,11 @@ $main-background: #EFEFEF;
 // Navigation
 $hover-background: #E7E7E7;
 $hover-text: #555;
+html {
+  margin: 0;
+  padding: 0;
 
+}
 body {
   background: $main-background;
   //padding-top: 50px;
@@ -19,6 +23,11 @@ body {
 @media only screen and (max-width: 460px) {
   .breadcrumbs {
     visibility: hidden !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    height: 0 !important;
   }
 }
 
