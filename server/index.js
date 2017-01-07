@@ -56,11 +56,11 @@ function validateBody(body) {
 	//CORS
 	app.use(cors());
 
-	app.get('/quote_count', (req, res) => {
-		models.Quotes.count({}, (err, count = 0) => {
-			res.send({count});
-		});
-	});
+	// app.get('/quote_count', (req, res) => {
+	// 	models.Quotes.count({}, (err, count = 0) => {
+	// 		res.send({count});
+	// 	});
+	// });
 
 	app.post('/submit', ({body}, res) => {
 
@@ -133,7 +133,7 @@ function validateBody(body) {
 			mandrill.messages.send({message, async: true}, (result) => {
 				console.log(result);
 				res.send(result);
-				models.Quotes.create({e: email, ts: new Date(), s: _.omit(body, 'contact.email')})
+				// models.Quotes.create({e: email, ts: new Date(), s: _.omit(body, 'contact.email')})
 			}, (err) => {
 				console.log(err);
 				res.statusCode = 400;
