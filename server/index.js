@@ -135,6 +135,7 @@ function validateBody(body) {
 				res.send(result);
 				models.Quotes.create({e: email, ts: new Date(), s: _.omit(body, 'contact.email')})
 			}, (err) => {
+				console.log(err);
 				res.statusCode = 400;
 				res.send({ok: false, error: err});
 			});

@@ -59,6 +59,10 @@ class contentContainer extends Component {
 
 	}
 
+	componentDidUpdate() {
+		//Set scroll location 0,0
+	}
+
 	renderViews() {
 		this.view0 = () => {
 			return (<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
