@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "echo \"Starting App\" && npm run prod",
-    "bluehost": "npm run build:prod && cp -rf ./dist ~/public_html/tech-otg-funnel",
+    "bluehost": "npm run build:prod && rm -rf ~/public_html/tech-otg-funnel && cp -rf ./dist ~/public_html/tech-otg-funnel",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0",
     "build:prod": "rm -rf ./dist/ && NODE_ENV=production node ./node_modules/webpack/bin/webpack.js -p && cp -rf ./client/images/ ./dist/images/ && cp ./client/index.html ./dist",
