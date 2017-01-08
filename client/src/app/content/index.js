@@ -149,7 +149,7 @@ class contentContainer extends Component {
 					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
 						<h2>And what is the <span style={{color: branding}}>Issue</span>?</h2>
 					}/>
-					<CardText style={{padding: 50}}>
+					<CardText style={{padding: 30}}>
 						{
 							ISSUES.map((issue, i) =>
 								<RaisedButton onTouchTap={(e) => { e.preventDefault(); this.progressNext(this.state.activeView, this.state.activeView + 1, issue, i)}}
@@ -158,7 +158,7 @@ class contentContainer extends Component {
 							)
 						}
 					</CardText>
-					<CardActions style={{padding: 50}}/>
+					<CardActions style={{padding: 30}}/>
 				</Card>
 			)
 		};
