@@ -59,16 +59,16 @@ class contentContainer extends Component {
 
 	}
 
-	componentDidUpdate() {
-		//Set scroll location 0,0
+	componentWillMount() {
+		this.renderViews();
 	}
 
 	renderViews() {
 		this.view0 = () => {
 			return (<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-				<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>Find out if we're in your city</h2>}/>
+				<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>LET'S GET STARTED</h2>}/>
 				<CardText style={{padding: 30}}>
-					With 1 OTG-tech across Central Florida, you'll never have to worry about your mobile device breaking again.
+					Enter a service Zip Code
 					<br/><br/><br/>
 					<TextField underlineFocusStyle={{color: branding, borderColor: branding}} type="number" value={this.state.zip} placeholder="ZIP" errorText={this.state.zipError} onChange={(e, zip) => {this.setState({zip}); this.validateZip(e, zip)}}/>
 				</CardText>
@@ -81,18 +81,20 @@ class contentContainer extends Component {
 		this.view1 = () => {
 			return (
 				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
+					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
 						<h2>First, Choose Your <span style={{color: branding}}>Device</span></h2>
 					}/>
 					<CardText style={{padding: 30}}>
 						{
 							Object.keys(DEVICES).map(deviceKey =>
-									<span>
+									<figure style={{display: 'inline-block'}}>
 										<img className="hidden-mobile" style={{cursor: 'pointer', marginLeft: 30, marginRight: 30}} title={DEVICES[deviceKey].label} width={DEVICES[deviceKey].width} height={DEVICES[deviceKey].height} src={DEVICES[deviceKey].image} onTouchTap={(e) => { e.preventDefault(); this.progressNext(1,2, deviceKey)}}/>
+										<figcaption><strong>{deviceKey}</strong></figcaption>
+
 										<RaisedButton className="hidden-desktop" onTouchTap={(e) => { e.preventDefault(); this.progressNext(this.state.activeView, this.state.activeView + 1, deviceKey)}}
 													  style={{width: 200, height: 100, padding: 0, margin: 30}}
 													  label={deviceKey}/>
-									</span>
+									</figure>
 							)
 						}
 					</CardText>
@@ -105,7 +107,7 @@ class contentContainer extends Component {
 		this.view2 = () => {
 			return (
 				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
+					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
 						<h2>What <span style={{color: branding}}>Model</span> {this.state.selectedDevice}</h2>
 					}/>
 					<CardText style={{padding: 30}}>
@@ -123,10 +125,9 @@ class contentContainer extends Component {
 		};
 
 		this.view3 = () => {
-
 			return (
 				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
+					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
 						<h2>Excellent, what <span style={{color: branding}}>Color</span> is it?</h2>
 					}/>
 					<CardText style={{padding: 30}}>
@@ -146,8 +147,8 @@ class contentContainer extends Component {
 		this.view4 = () => {
 			return (
 				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
-						<h2>And what is the <span style={{color: branding}}>Issue</span>?</h2>
+					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={
+						<h2>And what's the <span style={{color: branding}}>Issue</span>?</h2>
 					}/>
 					<CardText style={{padding: 30}}>
 						{
@@ -166,7 +167,7 @@ class contentContainer extends Component {
 		this.view5 = () => {
 			return (
 				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>Almost there!</h2>}/>
+					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>Almost there!</h2>}/>
 					<CardText style={{padding: 30}}>
 						Let us know where we should send your quote.
 						<br/><br/>
@@ -178,6 +179,7 @@ class contentContainer extends Component {
 					</CardText>
 					<CardActions style={{padding: 30}}>
 						<RaisedButton labelColor="white" backgroundColor={branding} disabled={!this.validateContactInfo(this.state.contactInfo) || this.state.submitted || this.state.submitting} label={this.renderSubmitLabel()} onTouchTap={(e) => {e.preventDefault(); this.submit(this.state)}}/>
+						<p><small style={{fontSize: 10}}>I understand that I may be contacted via text message,<br/> phone call or via email to receive a service quote after submitting this form. <br/> Standard messaging rates may apply.</small></p>
 					</CardActions>
 				</Card>
 			);
@@ -186,7 +188,7 @@ class contentContainer extends Component {
 		this.view6 = () => {
 			return (
 				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-					<CardHeader style={{padding: 50}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>Great!</h2>}/>
+					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>Great!</h2>}/>
 					<CardText style={{padding: 30}}>
 						<p style={{color:'green'}}><i className="fa fa-check-circle-o fa-5x"></i></p>
 						<p>We'd love to fix your device!</p>
@@ -197,6 +199,8 @@ class contentContainer extends Component {
 				</Card>
 			)
 		};
+
+
 
 		this.views = [
 			this.view0,
@@ -420,7 +424,6 @@ class contentContainer extends Component {
 	}
 
 	render() {
-		this.renderViews();
 		return <div>
 			{this.renderProgressBar()}
 			<div style={{textAlign: 'center'}}>

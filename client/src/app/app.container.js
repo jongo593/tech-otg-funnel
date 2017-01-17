@@ -10,7 +10,7 @@ class AppContainer extends Component {
 		return (
 			<div>
 				<Paper id="AppContainer">
-					<AppBar title={<a href="https://www.techotg.com" target="_blank"><img src="/images/TechOTG_Logo.png" height="64"/></a>}
+					<AppBar title={<a href="http://techotg.com" target="_blank"><img src="/images/TechOTG_Logo.png" height="64"/></a>}
 							iconElementLeft={<span></span>}
 							iconElementRight={<span style={{lineHeight: '300%'}}><a style={{color: branding, textDecoration: 'none'}} href="tel:14078728451">407.872.8451</a></span>}
 							style={{backgroundColor: 'white', paddingTop: 4}}
@@ -20,7 +20,7 @@ class AppContainer extends Component {
 				<Paper>
 					<footer style={{padding: 15}}>
 						<div style={{textAlign: 'right'}}>
-							<small style={{fontSize: 8}}>Made with <i className="fa fa-heart"></i> by <a href="https://www.linkedin.com/in/jonathan-go-06b83b97
+							<small style={{fontSize: 4}}>Made with <i className="fa fa-heart"></i> by <a href="https://www.linkedin.com/in/jonathan-go-06b83b97
 " target="_blank">Jonathan Go</a></small>
 						</div>
 					</footer>
