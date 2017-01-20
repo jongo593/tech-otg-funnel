@@ -87,7 +87,7 @@ class contentContainer extends Component {
 					<CardText style={{padding: 30}}>
 						{
 							Object.keys(DEVICES).map(deviceKey =>
-									<figure style={{display: 'inline-block'}}>
+									<figure style={{display: 'inline-block', margin: 'auto'}}>
 										<img className="hidden-mobile" style={{cursor: 'pointer', marginLeft: 30, marginRight: 30}} title={DEVICES[deviceKey].label} width={DEVICES[deviceKey].width} height={DEVICES[deviceKey].height} src={DEVICES[deviceKey].image} onTouchTap={(e) => { e.preventDefault(); this.progressNext(1,2, deviceKey)}}/>
 										<figcaption><strong>{deviceKey}</strong></figcaption>
 
