@@ -35,7 +35,7 @@ function validateBody(body) {
 
 	*/
 
-	let zipValid = _.has(body, 'zip') && _.isString(body.zip) && body.zip.length === 5;
+	let zipValid = _.has(body, 'zip') && _.isString(body.zip) && _.get(body, 'zip.length') === 5;
 	let deviceValid = _.has(body, 'device') && _.isString(body.device) && _.has(DEVICES, body.device);
 	let modelIndex = _.findIndex(DEVICES[body.device].models, {name: body.model});
 	let modelValid = _.has(body, 'model') && _.isString(body.model) && modelIndex > -1;
