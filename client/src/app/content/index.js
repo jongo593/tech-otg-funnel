@@ -101,7 +101,12 @@ class contentContainer extends Component {
 					</div>
 
 					<div className="row">
-						<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div className="col-xs-12">
+							<div className="row">
+								<div className="col-xs-12">
+									<h2 style={{color: branding, fontSize: 36}}>WHY CHOOSE TECHOTG?</h2>
+								</div>
+							</div>
 							<div className="row">
 								<div className="col-lg-3 col-md-3 col-sm-6 col-xs-12" style={{padding: 15}}>
 									<FontIcon
@@ -182,22 +187,7 @@ class contentContainer extends Component {
 					</div>
 
 				</div>
-			)
-
-
-			// return (<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-			// 	<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>LET'S GET STARTED</h2>}/>
-			// 	<CardText style={{padding: 30}}>
-			// 		<br/><br/><br/>
-			//
-			// 		<br/><br/><br/><br/>
-			//
-			// 		<br/><br/><br/><br/>
-			//
-			//
-			//
-			// 	</CardText>
-			// </Card>);
+			);
 		};
 
 		this.view1 = () => {
@@ -293,11 +283,11 @@ class contentContainer extends Component {
 					<CardText style={{padding: 30}}>
 						Let us know where we should send your quote.
 						<br/><br/>
-						<TextField underlineFocusStyle={{color: branding, borderColor: branding}}type="text" value={this.state.contactInfo.name} placeholder="Name" onChange={(e, name) => {this.setState({contactInfo: {number: this.state.contactInfo.number, email: this.state.contactInfo.email, name}})}}/>
+						<TextField underlineFocusStyle={{color: branding, borderColor: branding}}type="text" value={this.state.contactInfo.name} placeholder="Name" onChange={(e, name) => {this.setState({contactInfo: {number: this.state.contactInfo.number, email: this.state.contactInfo.email, name}})}} errorText={typeof this.state.contactInfo.name === 'string' && !this.validateName(this.state.contactInfo.name) ? 'Please enter a name' : null}/>
 						<br/><br/>
-						<TextField underlineFocusStyle={{color: branding, borderColor: branding}}type="email" value={this.state.contactInfo.email} placeholder="Email" onChange={(e, email) => {this.setState({contactInfo: {name: this.state.contactInfo.name, number: this.state.contactInfo.number, email}})}}/>
+						<TextField underlineFocusStyle={{color: branding, borderColor: branding}}type="email" value={this.state.contactInfo.email} placeholder="Email" onChange={(e, email) => {this.setState({contactInfo: {name: this.state.contactInfo.name, number: this.state.contactInfo.number, email}})}} errorText={typeof this.state.contactInfo.email === 'string' && !this.validateEmail(this.state.contactInfo.email) ? 'Please enter a valid email' : null}/>
 						<br/><br/>
-						<TextField underlineFocusStyle={{color: branding, borderColor: branding}}type="phone" value={this.state.contactInfo.number} placeholder="Phone Number" onChange={(e, number) => {this.setState({contactInfo: {name: this.state.contactInfo.name, email: this.state.contactInfo.email, number: applyPhoneMask(number)}})}}/>
+						<TextField underlineFocusStyle={{color: branding, borderColor: branding}}type="phone" value={this.state.contactInfo.number} placeholder="Phone Number" onChange={(e, number) => {this.setState({contactInfo: {name: this.state.contactInfo.name, email: this.state.contactInfo.email, number: applyPhoneMask(number)}})}} errorText={typeof this.state.contactInfo.number === 'string' && !this.validateNumber(this.state.contactInfo.number) ? 'Please enter a valid phone number xxx.xxx.xxxx' : null}/>
 					</CardText>
 					<CardActions style={{padding: 30}}>
 						<RaisedButton labelColor="white" backgroundColor={branding} disabled={!this.validateContactInfo(this.state.contactInfo) || this.state.submitted || this.state.submitting} label={this.renderSubmitLabel()} onTouchTap={(e) => {e.preventDefault(); this.submit(this.state)}}/>
@@ -309,15 +299,13 @@ class contentContainer extends Component {
 
 		this.view6 = () => {
 			return (
-				<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
+				<Card style={{textAlign: 'center', boxShadow: 0, height: '90vh'}}>
 					<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>Great!</h2>}/>
 					<CardText style={{padding: 30}}>
 						<p style={{color:'green'}}><i className="fa fa-check-circle-o fa-5x"></i></p>
 						<p>We'd love to fix your device!</p>
 						<p>We will contact you as soon as we have your quote ready to schedule your repair!</p>
 					</CardText>
-					<CardActions style={{padding: 30}}>
-					</CardActions>
 				</Card>
 			)
 		};
@@ -482,15 +470,19 @@ class contentContainer extends Component {
 
 
 	validateContactInfo({name = '', email, number}) {
+		return this.validateName(name) && this.validateEmail(email) && this.validateNumber(number);
+	}
 
-		let nameValid = typeof name === 'string' && name.length > 0;
+	validateName(name) {
+		return  typeof name === 'string' && name.length > 0;
+	}
 
-		let emailValid = typeof email === 'string' && email.indexOf('@') > 0 && email.indexOf('.') > 0;
+	validateEmail(email) {
+		return typeof email === 'string' && email.indexOf('@') > 0 && email.lastIndexOf('.') > 0 && email.lastIndexOf('.') !== email.length - 1 ;
+	}
 
-		let numberValid = typeof number === 'string' && number.length === 12;
-
-		return nameValid && emailValid && numberValid;
-
+	validateNumber(number) {
+		return typeof number === 'string' && number.length === 12;
 	}
 
 	validateZip(event, zip) {
