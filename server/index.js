@@ -15,6 +15,10 @@ const APP_PORT = config.APP_PORT;
 //Mandrill
 const mandrill = new Mandrill.Mandrill(config.MANDRILL_KEY);
 
+process.on('uncaughtException', (err) => {
+	console.log('UNCAUGHT ERROR: ', err);
+});
+
 function validateBody(body) {
 
 	/*
