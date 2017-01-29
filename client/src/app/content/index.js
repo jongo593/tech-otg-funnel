@@ -6,6 +6,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
 import axiosInstance from '../../utils/axios';
+import Divider from 'material-ui/Divider';
+import FontIcon from 'material-ui/FontIcon';
 
 import {DEVICES, ISSUES} from '../../../constants';
 
@@ -65,17 +67,137 @@ class contentContainer extends Component {
 
 	renderViews() {
 		this.view0 = () => {
-			return (<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
-				<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>LET'S GET STARTED</h2>}/>
-				<CardText style={{padding: 30}}>
-					Enter a service Zip Code
-					<br/><br/><br/>
-					<TextField underlineFocusStyle={{color: branding, borderColor: branding}} type="number" value={this.state.zip} placeholder="ZIP" errorText={this.state.zipError} onChange={(e, zip) => {this.setState({zip}); this.validateZip(e, zip)}}/>
-				</CardText>
-				<CardActions style={{padding: 30}}>
-					<RaisedButton disabled={this.state.zipValid !== 1} label="Continue" backgroundColor={branding} labelColor="white" onTouchTap={(e) => {e.preventDefault(); this.progressNext(this.state.activeView, this.state.activeView + 1)}}/>
-				</CardActions>
-			</Card>);
+
+			return (
+				<div className="col-xs-12">
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-12">
+							<h2 style={{textAlign: 'center'}}>LET'S GET STARTED</h2>
+						</div>
+					</div>
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-12">
+							Enter a service Zip Code
+						</div>
+					</div>
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-12">
+							<TextField underlineFocusStyle={{color: branding, borderColor: branding}} type="number" value={this.state.zip} placeholder="ZIP" errorText={this.state.zipError} onChange={(e, zip) => {this.setState({zip}); this.validateZip(e, zip)}}/>
+
+						</div>
+					</div>
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-12">
+							<RaisedButton disabled={this.state.zipValid !== 1} label="Continue" backgroundColor={branding} labelColor="white" onTouchTap={(e) => {e.preventDefault(); this.progressNext(this.state.activeView, this.state.activeView + 1)}}/>
+
+						</div>
+					</div>
+
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-12">
+							<Divider/>
+
+						</div>
+					</div>
+
+					<div className="row">
+						<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div className="row">
+								<div className="col-lg-3 col-md-3 col-sm-6 col-xs-12" style={{padding: 15}}>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-calendar-check-o"
+									/>
+									<p><strong>CONVENIENTLY SIMPLE</strong></p>
+									<p>Pick the time and place most convenient for you & we'll come to you and repair your device on site. Whenever. Wherever</p>
+								</div>
+								<div className="col-lg-3 col-md-3 col-sm-6 col-xs-12" style={{padding: 15}}>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-star"
+									/>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-star"
+									/>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-star"
+									/>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-star"
+									/>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-star"
+									/>
+									<p><strong>QUALITY GUARANTEED</strong></p>
+									<p>We don't skimp on quality. Every part we use is up to industry standards. All Parts and repairs are backed by our lifetime warranty.</p>
+								</div>
+								<div className="col-lg-3 col-md-3 col-sm-6 col-xs-12" style={{padding: 15}}>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-check"
+									/>
+									<p><strong>PROFESSIONALLY CERTIFIED</strong></p>
+									<p>We're people helping people. Rigorously trained technicians with years of experience. Rest assured, you can always expect the best.</p>
+								</div>
+								<div className="col-lg-3 col-md-3 col-sm-6 col-xs-12" style={{padding: 15}}>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-lock"
+									/>
+									<p><strong>YOUR PRIVACY, SECURED</strong></p>
+									<p>On-site device repair means your data is safe and secured. Never leaving your site.</p>
+								</div>
+
+
+							</div>
+
+						</div>
+					</div>
+
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-12">
+							<Divider/>
+						</div>
+					</div>
+
+					<div className="row" style={{padding: 30}}>
+						<div className="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+							<div style={{backgroundColor: '#e3e3e3', borderRadius: 2, color: branding, padding: 15, textAlign: 'left'}}>
+								<p>
+									<FontIcon
+										style={{color: branding}}
+										className="fa fa-shield"
+									/>&nbsp;&nbsp;&nbsp;<strong>FREE BONUS</strong>
+								</p>
+								<p>
+									TEMPERED-GLASS SCREEN PROTECTOR
+								</p>
+								<p>We'll install a free screen protector at no extra cost <small>(iPhone only)</small>.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			)
+
+
+			// return (<Card style={{textAlign: 'center', boxShadow: 0, minHeight: '70vh'}}>
+			// 	<CardHeader style={{padding: 30}} titleStyle={{textAlign: 'center', paddingRight: 0}} textStyle={{textAlign: 'center', paddingRight: 0}} title={<h2 style={{textAlign: 'center'}}>LET'S GET STARTED</h2>}/>
+			// 	<CardText style={{padding: 30}}>
+			// 		<br/><br/><br/>
+			//
+			// 		<br/><br/><br/><br/>
+			//
+			// 		<br/><br/><br/><br/>
+			//
+			//
+			//
+			// 	</CardText>
+			// </Card>);
 		};
 
 		this.view1 = () => {
