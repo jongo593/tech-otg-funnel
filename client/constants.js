@@ -1,4 +1,69 @@
- const DEVICES = {
+const CONFIG = {
+	node: {
+		key: 'zip',
+		value: '',
+		label: 'Please enter you zip',
+		type: 'text_input',
+		children: [
+			{
+				key: 'device',
+				value: 1,
+				label: 'iPhone',
+				img: 'iPhone.png',
+				type: 'img_btn',
+				children: [
+					{
+						key: 'model',
+						value: 1,
+						label: '6s',
+						type: 'btn',
+						children: [
+
+						]
+					},
+					{
+						key: 'model',
+						value: 1,
+						label: '6s',
+						type: 'btn'
+					},
+					{
+						key: 'model',
+						value: 1,
+						label: '6s',
+						type: 'btn'
+					}
+				]
+			}
+		]
+	},
+	done: [
+		{
+			type: 'text_input',
+			label: 'Name',
+			key: 'name'
+		},
+		{
+			type: 'toggle_input',
+			label: 'someToggleLabel',
+			key: 'toggle'
+		},
+		{
+			type: 'submit',
+			label: 'OK GO',
+			src: 'http://techotg.com:3000'
+		}
+	],
+	confirm: {
+		title: 'THANKS',
+		content: 'We\'ll hear back from you'
+	}
+
+}
+
+
+
+const DEVICES = {
 	iPhone: {
 		image: '/images/iPhone.png',
 		width: 200,
